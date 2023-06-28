@@ -26,8 +26,17 @@ gcloud container clusters get-credentials autopilot-cluster-1 --region us-centra
 # create a global static ip
 gcloud compute addresses create text-generation-inference-ip --global
 
+# create a A record in your domain pointing to the ip returned in this command
+gcloud compute addresses describe text-generation-inference-ip --global
+
 # deploy a model (default to bigscience/bloomz-7b1 on a100 gpu)
 helm install text-generation-inference louis030195/text-generation-inference-helm --set ingress.host=your.domain.com
+
+# query the model
+curl https://your.domain.com/bloomz-7b1 \
+    -X POST \
+    -d '{"inputs":"What is Deep Learning?","parameters":{"max_new_tokens":17}}' \
+    -H 'Content-Type: application/json'
 ```
 
 
