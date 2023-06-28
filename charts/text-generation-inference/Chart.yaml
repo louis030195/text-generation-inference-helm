@@ -1,3 +1,4 @@
 apiVersion: v2
 name: text-generation-inference
 description: Deploy text generation inference service 
+version: 0.1.0
