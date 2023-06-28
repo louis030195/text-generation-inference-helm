@@ -8,15 +8,16 @@ models:
       requests:
         memory: 54Gi
         cpu: 7500m 
-  - name: bigcode/starcoderplus
-    shortName: starcoderplus
-    gpu: nvidia-tesla-t4
-    resources:
-      limits:
-        nvidia.com/gpu: 1
-      requests:
-        memory: 32Gi
-        cpu: 5000m 
+  # TODO: atm nultimodel will not properly work due to GKE ingress not supporting rewrite (need to route requests properly)
+  # - name: bigcode/starcoderplus
+  #   shortName: starcoderplus
+  #   gpu: nvidia-tesla-t4
+  #   resources:
+  #     limits:
+  #       nvidia.com/gpu: 1
+  #     requests:
+  #       memory: 32Gi
+  #       cpu: 5000m 
 # add more models as needed
 
 image:

@@ -15,7 +15,29 @@ Once Helm is set up properly, add the repo as follows:
 helm repo add louis030195 https://louis030195.github.io/text-generation-inference-helm
 ```
 
-You can then run `helm search repo louis030195` to see the charts.
+```bash
+PROJECT_ID="<your gcp project>"
+# create a cluster
+gcloud container --project "$PROJECT_ID" clusters create-auto "autopilot-cluster-1" --region "us-central1" --release-channel "regular" --network "projects/$PROJECT_ID/global/networks/default" --subnetwork "projects/$PROJECT_ID/regions/us-central1/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22"
+
+# get the kubeconfig
+gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1
+
+# create a global static ip
+gcloud compute addresses create text-generation-inference-ip --global
+
+# deploy a model (default to bigscience/bloomz-7b1 on a100 gpu)
+helm install text-generation-inference louis030195/text-generation-inference-helm --set ingress.host=your.domain.com
+```
+
+
+### Clean up
+
+```bash
+gcloud container clusters delete autopilot-cluster-1 --region us-central1
+gcloud compute addresses delete text-generation-inference-ip --global
+```
+
 
 ## Contributing
 
