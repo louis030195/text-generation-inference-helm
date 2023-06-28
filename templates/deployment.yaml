@@ -1,0 +1,34 @@
+{{- range .Values.models }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .shortName }} 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .shortName }}
+      tier: {{ .shortName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .shortName }}
+        tier: {{ .shortName }}
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-accelerator: {{ .gpu }}
+      containers:
+      - name: text-generation-inference
+        image: {{ $.Values.image.repository }}:{{ $.Values.image.tag }}
+        args: ["--model-id", "{{ .name }}", "--num-shard", "1"]
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: shm
+          mountPath: /dev/shm
+        - name: data
+          mountPath: /data
+        resources: 
+{{ toYaml .resources | indent 10 }}
+---
+{{- end }}

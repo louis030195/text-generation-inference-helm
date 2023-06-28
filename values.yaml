@@ -1,0 +1,29 @@
+models: 
+  - name: bigscience/bloomz-7b1
+    shortName: bloomz-7b1
+    gpu: nvidia-tesla-a100
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+      requests:
+        memory: 54Gi
+        cpu: 7500m 
+  - name: bigcode/starcoderplus
+    shortName: starcoderplus
+    gpu: nvidia-tesla-t4
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+      requests:
+        memory: 32Gi
+        cpu: 5000m 
+# add more models as needed
+
+image:
+  repository: ghcr.io/huggingface/text-generation-inference 
+  tag: latest
+
+ingress:
+  host: api.llm.ai
+  tls: 
+    secretName: managed-cert
