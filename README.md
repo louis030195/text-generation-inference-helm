@@ -1,4 +1,4 @@
-# Kubernetes Helm Charts for https://github.com/huggingface/text-generation-inference
+# Kubernetes Helm Charts for [huggingface/text-generation-inference](https://github.com/huggingface/text-generation-inference)
 
 [![License](https://img.shields.io/badge/License-APACHE-blue.svg)](https://opensource.org/licenses/APACHE) ![Release Charts](https://github.com/louis030195/text-generation-inference-helm/workflows/Release%20Charts/badge.svg?branch=main)
 
@@ -50,4 +50,4 @@ We'd love to have you contribute!
 
 ## Helm charts build status
 
-![Release Charts](https://https://github.com/louis030195/text-generation-inference-helm/workflows/Release%20Charts/badge.svg?branch=main)
+![Release Charts](https://github.com/louis030195/text-generation-inference-helm/workflows/Release%20Charts/badge.svg?branch=main)
