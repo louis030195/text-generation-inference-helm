@@ -17,4 +17,4 @@ spec:
           service:
             name: {{ .Values.model.shortName }}-service
             port:
-              number: 80 
+              number: 80

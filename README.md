@@ -47,6 +47,9 @@ gcloud container clusters delete autopilot-cluster-1 --region us-central1
 gcloud compute addresses delete text-generation-inference-ip --global
 ```
 
+## Limitations
+
+- Currently does not support multi-model under the same domain due to the limitation of the GKE ingress controller (does not support URL rewrite), can probably fix this with some hack.
 
 ## Contributing
 
