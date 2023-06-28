@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  text-generation-inference:
+  - apiVersion: v2
+    created: "2023-06-28T20:03:17.351214543Z"
+    description: Deploy text generation inference service
+    digest: cabc7e936d577cedaf0256c95785378f3b67c22b41531b7e29e357491bf74c2d
+    name: text-generation-inference
+    urls:
+    - https://github.com/louis030195/text-generation-inference-helm/releases/download/text-generation-inference-0.1.0/text-generation-inference-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-06-28T20:03:17.351219443Z"
